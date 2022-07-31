@@ -1,19 +1,22 @@
+# Database
 import influxdb_client
-import os
-import time
-import pandas
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-# pip install yfinance --upgrade --no-cache-dir
-import yfinance as yf
-
+# Stock API
 # pip install polygon-api-client
 from polygon import RESTClient
+# pip install yfinance --upgrade --no-cache-dir
+# import yfinance as yf
 
-# TEST FUNCTIONS
-import random
+# Utility
 from datetime import datetime, timedelta
+import time
+import pandas
+
+# TEST
+import random
+
 
 '''
 HELPER METHODS
@@ -35,6 +38,7 @@ Get Historical Data via Polygon API
 * Return
     dataframe containing timestamp and close price
 * Parameters 
+    ticker: <str>
     start_date: <str> "%YYYY-%mm-%dd" 
     precision: <str> "minute" / "hour" / "day" / ...
 -----------------------------------------------------------------------------'''
@@ -118,7 +122,7 @@ INFLUXDB_MEASUREMENT_NAME = TICKER + " Close Price"
 START 
 -----------------------------------------------------------------------------'''
 
-prompt = input("Start query? (Y/N)")
+prompt = input("Start writing? (Y/N)")
 if prompt == "Y" or prompt == "y":
     STARTED = True
 
